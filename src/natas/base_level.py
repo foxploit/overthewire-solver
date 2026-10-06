@@ -11,7 +11,7 @@ class NatasLevel(ABC):
 
   num: int # Its definded in each subclass
 
-  def __init__(self, passwd: str):
+  def __init__(self, password: str):
     self.password     = password
     self.session      = requests.Session()
     self.session.auth = (f"natas{self.num}", password)
