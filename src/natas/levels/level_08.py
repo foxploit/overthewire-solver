@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 class Level_08(NatasLevel):
 
   num = 8
-  explanation = "The secret is encoded with bin2hex(strrev(base64_encode())). We reverse these\n     steps to decode it and get the password to the next level."
+  explanation = "On this level the secret is encoded with bin2hex(strrev(base64_encode())).\n     We reverse these steps to decode it and get the password to the next level."
 
   def exploit(self) -> str:
 
