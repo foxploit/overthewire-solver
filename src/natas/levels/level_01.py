@@ -4,7 +4,7 @@ from src.natas.base_level import NatasLevel
 class Level_01(NatasLevel):
 
   num = 1
-  explanation = "Password in a commented HTML, visible with Crtl + U command only, Inspect Browser Function. is disabled"
+  explanation = "Password in a commented HTML, visible with Crtl + U command only,\n     Inspect Browser Function. is disabled"
 
   def exploit(self) -> str:
 
