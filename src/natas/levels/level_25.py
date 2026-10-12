@@ -4,7 +4,7 @@ from src.natas.base_level import NatasLevel
 class Level_25(NatasLevel):
 
   num = 25
-  explanation = "LFI + Log Poisoning - Se inyecta PHP en el log de Apache a través del header User-Agent,\n     luego se incluye ese log mediante un LFI (bypass con `....//`)\n     para que el servidor ejecute el código inyectado y filtre la password."
+  explanation = "On this level, Apache logs the User-Agent header for every request. We inject PHP code\n     into the log via the User-Agent, then use an LFI (bypassing the filter with `....//`) to\n     include that log file, causing the server to execute the injected code and leak the password."
 
   def exploit(self) -> str:
 

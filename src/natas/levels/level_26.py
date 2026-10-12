@@ -6,8 +6,7 @@ import base64
 class Level_26(NatasLevel):
 
   num = 26
-  explanation = "PHP Object Injection - Se fuerza el unserialize de un objeto Logger falso vía cookie,\n     cuyo __destruct escribe exitMsg (PHP) en logFile, dentro de img/, para luego incluirlo."
-
+  explanation = "On this level, the app unserializes a cookie-controlled object. We forge a fake Logger\n     object and set it as the `drawing` cookie, so its `__destruct` writes our PHP payload\n     (stored in `exitMsg`) into `logFile` inside img/, which we then request directly to leak the password."
 
   def exploit(self) -> str:
 
