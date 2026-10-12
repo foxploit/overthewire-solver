@@ -5,7 +5,7 @@ import string
 class Level_16(NatasLevel):
 
   num = 16
-  explanation = "On this level, command injection via \`$()\` bypasses the character filter.\n     We first identify valid password characters, then brute-force the password one character at a time."
+  explanation = "On this level, command injection via `$()` bypasses the character filter.\n     We first identify valid password characters, then brute-force the password one character at a time."
 
   def exploit(self) -> str:
 

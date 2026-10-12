@@ -32,3 +32,19 @@ def solve_all(start_password: str = "natas0", up_to: int = 34):
       break
 
   return results
+
+def solve_level(_level: int, _password: str):
+
+  result   = {}
+
+  try:
+
+    level = load_level(_level, _password)
+    password = level.run()
+    result   = {"password": password, "explanation":level.explanation}
+
+  except Exception as e:
+
+    logger.error("Failed at level %s: %s ", _level, e)
+
+  return result
