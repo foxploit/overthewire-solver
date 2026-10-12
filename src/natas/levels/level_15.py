@@ -22,7 +22,7 @@ class Level_15(NatasLevel):
         }
         resp_chars = self.session.post(self.base_url + "/index.php", data = payload)
         if re.search(r'This user exists', resp_chars.text) != None:
-          PASSWD = PASSWD + char
+          PASSWD  += char
           FOUND    = True
           break
       if not FOUND:
