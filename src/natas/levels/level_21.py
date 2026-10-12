@@ -4,7 +4,7 @@ from src.natas.base_level import NatasLevel
 class Level_21(NatasLevel):
 
   num = 21
-  explanation = ""
+  explanation = "On this level, two subdomains share sessions. We set `admin=1` on the experimenter subdomain,\n     then reuse the same `PHPSESSID` on the main site to gain admin privileges."
 
   def exploit(self) -> str:
 

@@ -4,7 +4,7 @@ from src.natas.base_level import NatasLevel
 class Level_22(NatasLevel):
 
   num = 22
-  explanation = ""
+  explanation = "On this level, the page redirects non-admin users, but the password is printed before the `Location` header.\n     We disable automatic redirects to capture the response containing the password."
 
   def exploit(self) -> str:
 
