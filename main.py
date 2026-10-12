@@ -12,10 +12,10 @@ if __name__ == "__main__":
 
   if args.level:
     result = solve_natas_level(args.level, args.password)
-    print(f"natas{args.level}: {result['password']}")
+    print(f"natas{args.level + 1}: {result['password']}")
     print(f"  💡 {result['explanation']}\n")
   else:
     results = solve_all_natas_levels("natas0")
     for level, data in results.items():
-      print(f"natas{level}: {data['password']}")
+      print(f"natas{level + 1}: {data['password']}")
       print(f"  💡 {data['explanation']}\n")
