@@ -108,7 +108,7 @@ Contributions are welcome: open an [Issue](https://github.com/foxploit/overthewi
 
 ## Author
 
-**foxploit animal de colina** — [github.com/foxploit](https://github.com/foxploit)
+**foxploit** — [github.com/foxploit](https://github.com/foxploit)
 
 ## License
 
