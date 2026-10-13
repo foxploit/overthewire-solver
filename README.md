@@ -2,7 +2,7 @@
 
 # 🦊 OverTheWire Solver
 
-**Resuelve los niveles de [OverTheWire](https://overthewire.org/wargames/) de forma automatizada.**
+**Automated solver for [OverTheWire](https://overthewire.org/wargames/) wargame levels.**
 
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Python](https://img.shields.io/badge/Python-3.10+-blue)
@@ -12,30 +12,30 @@
 
 ---
 
-## ¿Qué es?
+## What is this?
 
-*OverTheWire Solver* es una herramienta que automatiza la resolución de los wargames de [OverTheWire](https://overthewire.org/wargames/). Cada nivel implementa su propio exploit (`exploit()`), que se conecta al servidor del wargame, obtiene la contraseña del siguiente nivel y explica cómo lo ha conseguido.
+*OverTheWire Solver* automates solving the [OverTheWire](https://overthewire.org/wargames/) wargames. Each level implements its own exploit (`exploit()`), which connects to the wargame server, retrieves the next level's password, and explains how it got it.
 
-> ⚠️ **Aviso:** este proyecto es solo para aprendizaje. Intenta resolver los niveles a mano primero: es la mejor forma de aprender.
+> ⚠️ **Disclaimer:** this project is for learning purposes only. Try to solve the levels by hand first — that's the best way to actually learn.
 
-## Características
+## Features
 
-* Menú interactivo (`questionary` + `halo`) para elegir wargame, nivel y contraseña actual.
-* Modo CLI directo: resuelve un nivel concreto pasando `--level` y `--password`.
-* Cada nivel incluye una explicación (`explanation`) de la técnica usada para resolverlo.
-* Estructura modular: cada nivel es una clase (`NatasLevel`) independiente, fácil de ampliar a otros wargames.
+* Interactive menu (`questionary` + `halo`) to pick a wargame, level, and current password.
+* Direct CLI mode: solve a specific level by passing `--level` and `--password`.
+* Every level includes an `explanation` of the technique used to solve it.
+* Modular structure: each level is an independent `NatasLevel` class, easy to extend to other wargames.
 
-## Wargames soportados
+## Supported wargames
 
-| Wargame    | Niveles resueltos | Estado          |
-|------------|--------------------|-----------------|
-| Natas      | 34/34 (0–33)       | ✅ Completo     |
-| Bandit     | 0                  | 🚧 Por empezar  |
-| Leviathan  | —                  | ⏳ En desarrollo|
-| Krypton    | —                  | ⏳ En desarrollo|
-| Narnia     | —                  | ⏳ En desarrollo|
+| Wargame    | Levels solved     | Status          |
+|------------|-------------------|-----------------|
+| Natas      | 34/34 (0–33)      | ✅ Complete     |
+| Bandit     | 0                 | 🚧 Not started  |
+| Leviathan  | —                 | ⏳ In progress  |
+| Krypton    | —                 | ⏳ In progress  |
+| Narnia     | —                 | ⏳ In progress  |
 
-## Instalación
+## Installation
 
 ```bash
 git clone https://github.com/foxploit/overthewire-solver.git
@@ -43,65 +43,73 @@ cd overthewire-solver
 pip install -r requirements.txt
 ```
 
-## Uso
+## Usage
 
-### Menú interactivo
+### Interactive menu
 
 ```bash
 python3 main.py
 ```
 
-Elige el wargame, el nivel actual y la contraseña que ya tienes; después puedes pedir solo la pista (💡) o la contraseña del siguiente nivel (🔓).
+Pick the wargame, your current level, and the password you already have; then choose either a hint (💡) or the next level's password (🔓).
 
-### Modo directo (solo Natas por ahora)
+### Direct mode (Natas only, for now)
 
 ```bash
 python3 main.py --level 0 --password natas0
 ```
 
-| Argumento    | Descripción                                   |
-|--------------|------------------------------------------------|
-| `--level`    | Número de nivel de Natas a resolver            |
-| `--password` | Contraseña actual del nivel indicado           |
+Example output:
 
-## Estructura del proyecto
+```
+natas1: scfWG6qNEIdzqVyfRwEGXyNUfFZkZeQ7
+  💡 Password in a commented HTML, visible with Crtl + U command or
+     Inspect Browser Function.
+```
+
+| Argument     | Description                              |
+|--------------|-------------------------------------------|
+| `--level`    | Natas level number to solve               |
+| `--password` | Current password for that level           |
+
+## Project structure
 
 ```
 overthewire-solver/
-├── main.py                   # Entry point: menú interactivo o modo CLI
-├── menu.py                   # Menú de selección de wargame/nivel
+├── main.py                   # Entry point: interactive menu or CLI mode
+├── menu.py                   # Wargame/level selection menu
 ├── utils/
 │   └── clear.py
 ├── src/
 │   ├── natas/
-│   │   ├── natas.py          # Flujo del menú para Natas
-│   │   ├── runner.py         # Carga dinámica y ejecución de niveles
-│   │   ├── base_level.py     # Clase base NatasLevel (ABC)
+│   │   ├── natas.py          # Natas menu flow
+│   │   ├── runner.py         # Dynamic level loading and execution
+│   │   ├── base_level.py     # NatasLevel base class (ABC)
 │   │   └── levels/
-│   │       └── level_00.py … level_33.py   # 34 exploits, uno por nivel
-│   └── bandit/                # Pendiente de implementar
+│   │       └── level_00.py … level_33.py   # 34 exploits, one per level
+│   └── bandit/                # Not implemented yet
 ├── requirements.txt
 ├── LICENSE
 └── README.md
 ```
 
-## Hoja de ruta
+## Roadmap
 
-- [x] Completar Natas (34/34 niveles)
-- [ ] Implementar Bandit
-- [ ] Implementar Leviathan
-- [ ] Implementar Krypton
-- [ ] Implementar Narnia
-- [ ] Tests automáticos por nivel
+- [x] Complete Natas (34/34 levels)
+- [ ] Implement Bandit
+- [ ] Implement Leviathan
+- [ ] Implement Krypton
+- [ ] Implement Narnia
+- [ ] Automated tests per level
 
-## Contribuciones
+## Contributing
 
-Las contribuciones son bienvenidas: abre un [Issue](https://github.com/foxploit/overthewire-solver/issues) o un [Pull Request](https://github.com/foxploit/overthewire-solver/pulls).
+Contributions are welcome: open an [Issue](https://github.com/foxploit/overthewire-solver/issues) or a [Pull Request](https://github.com/foxploit/overthewire-solver/pulls).
 
-## Autor
+## Author
 
-**x0n3** — [github.com/foxploit](https://github.com/foxploit)
+**foxploit animal de colina** — [github.com/foxploit](https://github.com/foxploit)
 
-## Licencia
+## License
 
-Distribuido bajo licencia MIT. Consulta [`LICENSE`](LICENSE) para más información.
+Distributed under the MIT License. See [`LICENSE`](LICENSE) for more information.
