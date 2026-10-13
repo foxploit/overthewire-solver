@@ -32,5 +32,4 @@ class NatasLevel(ABC):
 
   def run(self) -> str:
     next_password = self.exploit()
-    logger.info("natas%s -> natas%s: %s", self.num, self.num + 1, next_password)
     return next_password
